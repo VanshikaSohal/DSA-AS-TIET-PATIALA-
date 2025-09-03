@@ -1,30 +1,44 @@
 #include <iostream>
-#include <stack>
 #include <string>
 using namespace std;
-stack<char> st;
-void reverse(string s) {
-    for (int i = 0; i < s.length(); i++) {
-        char ch = s[i];
-        st.push(ch);
+const int MAX_SIZE = 100;
+char st[MAX_SIZE];   
+int top = -1;
+void push(char element) {
+    if (top >= MAX_SIZE - 1) {
+        cout << "Stack overflow" << endl;
+    } else {
+        st[++top] = element;
     }
 }
-string display() {
+char pop() {
+    if (top < 0) {
+        cout << "Stack underflow" << endl;
+        return '\0'; 
+    } else {
+        return st[top--];
+    }
+}
+bool isempty() {
+    return (top == -1);
+}
+string reversestring(string s) {
+    for (int i = 0; i < (int)s.length(); i++) {
+        push(s[i]);
+    }
     string reversed = "";
-    while (!st.empty()) {
-        reversed += st.top();
-        st.pop();
+    while (!isempty()) {
+        reversed += pop();
     }
     return reversed;
 }
 int main() {
     string s;
-    cout << "Enter the string: " << endl;
-    cin >> s;
-    cout << endl;
-    reverse(s);   
-    string reversevalue = display();  
-    cout << reversevalue << endl;
+    cout << "Enter the string: ";
+    getline(cin, s);  
+    string reversedval = reversestring(s);
+    cout << "Reversed string: " << reversedval << endl;
+    cin.get(); 
     return 0;
 }
 
