@@ -1,4 +1,4 @@
-#include <iostream>
+#include<iostream>
 #include<vector>
 using namespace std;
 int missing(vector<int>& arr, int n) {
