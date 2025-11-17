@@ -1,19 +1,21 @@
 #include <iostream>
 #include<vector>
 using namespace std;
-int n;
-vector<int> arr;
+int n=0;
+int arr[100];
 void create() {
     cout << "Enter number of elements: ";
-    cin >> n;    
-    vector<int> arr(n);
+    cin >> n;   
+	if(n>100){
+		cout<<"MAX 1OO ELEMENTS ALLOWED REENTER N";
+		n=0;
+		return;
+	}
     cout << "Enter " << n << " elements: ";
     for (int i = 0; i < n; i++)
         cin >> arr[i];
 }
 void display() {
-	
-vector<int> arr(n);
     if (n == 0) {
         cout << "Array is empty!" << endl;
         return;
@@ -24,8 +26,6 @@ vector<int> arr(n);
     cout << endl;
 }
 void insert() {
-	
-vector<int> arr(n);
     int posi, value;
     cout << "Enter position where you want to insert the element: ";
     cin >> posi;
@@ -34,10 +34,10 @@ vector<int> arr(n);
     if (posi < 1 || posi > n + 1) {
         cout << "Invalid position" << endl;
     }
+	n++;
     for (int i = n; i >= posi; i--)
     arr[i] = arr[i - 1];
     arr[posi - 1] = value;
-    n++;
 }
 void del() {
 	int posi;
@@ -52,8 +52,6 @@ void del() {
     n--;
 }
 void linearsearch() {
-	
-vector<int> arr(n);
     int target;
     cout << "Enter element to search: ";
     cin >> target;
