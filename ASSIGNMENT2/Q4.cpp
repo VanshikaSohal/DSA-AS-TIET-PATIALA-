@@ -1,13 +1,11 @@
 #include <iostream>
 #include <cstring>
-#include<vector>
 #include <cctype>
 #include<algorithm>
 using namespace std;
 int main() {
     char str1[100], str2[100];
     int choice;
-
     while (1) {
         cout << "\nString Related Programs:\n";
         cout << "1. Concatenate one string to another\n";
