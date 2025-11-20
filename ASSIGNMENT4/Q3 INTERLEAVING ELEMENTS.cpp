@@ -31,12 +31,13 @@ int main() {
         q1.enqueue(x); 
     }
     int half = (n + 1) / 2;  // works for even & odd
+    int secondhalf=n-half;
     for (int i = 0; i < half; i++) 
         q2.enqueue(q1.dequeue());
     int iterations = q2.size();
     for (int i = 0; i < iterations; i++) {
         q1.enqueue(q2.dequeue());    
-        if (!q1.empty())             
+        if (i<secondhalf)             
             q1.enqueue(q1.dequeue());
     }
     cout << "PRINTING VALUES: " << endl;
