@@ -24,7 +24,6 @@ void insertEnd(int x) {
     while (temp->next) temp = temp->next;
     temp->next = n;
 }
-
 void insertAfter(int val, int x) {
     Node* temp = head;
     while (temp && temp->data != val) temp = temp->next;
@@ -34,7 +33,6 @@ void insertAfter(int val, int x) {
     n->next = temp->next;
     temp->next = n;
 }
-
 void insertBefore(int val, int x) {
     if (!head) return;
     if (head->data == val) { insertBegin(x); return; }
@@ -56,7 +54,11 @@ void deleteBegin() {
 
 void deleteEnd() {
     if (!head) return;
-    if (!head->next) { delete head; head = NULL; return; }
+    if (!head->next) {
+        delete head;
+        head = NULL; 
+        return;
+    }
     Node* temp = head;
     while (temp->next->next) temp = temp->next;
     delete temp->next;
@@ -65,7 +67,10 @@ void deleteEnd() {
 
 void deleteNode(int val) {
     if (!head) return;
-    if (head->data == val) { deleteBegin(); return; }
+    if (head->data == val) 
+    {
+        deleteBegin();
+        return; }
     Node* temp = head;
     while (temp->next && temp->next->data != val) temp = temp->next;
     if (!temp->next) return;
@@ -73,7 +78,6 @@ void deleteNode(int val) {
     temp->next = temp->next->next;
     delete todelete;
 }
-
 void searchNode(int val) {
     Node* temp = head;
     int pos = 1;
@@ -91,10 +95,10 @@ void displayList() {
 int main() {
     int choice, val, val2;
     do {
-        cout << "\n--- Singly Linked List Menu ---\n";
-        cout << "1. Insert at Beginning\n2. Insert at End\n3. Insert After\n4. Insert Before\n";
-        cout << "5. Delete from Beginning\n6. Delete from End\n7. Delete Specific Node\n";
-        cout << "8. Search Node\n9. Display List\n10. Exit\n";
+        cout << "Singly Linked List Menu";
+        cout << "1. Insert at Beginning 2. Insert at End 3. Insert After 4. Insert Before ";
+        cout << "5. Delete from Beginning 6. Delete from End 7. Delete Specific Node ";
+        cout << "8. Search Node 9. Display List 10. Exit\n";
         cout << "Enter choice: ";
         cin >> choice;
         switch(choice) {
