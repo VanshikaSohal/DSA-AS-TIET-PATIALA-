@@ -96,23 +96,39 @@ int main() {
     int choice, val, val2;
     do {
         cout << "Singly Linked List Menu";
-        cout << "1. Insert at Beginning 2. Insert at End 3. Insert After 4. Insert Before ";
-        cout << "5. Delete from Beginning 6. Delete from End 7. Delete Specific Node ";
-        cout << "8. Search Node 9. Display List 10. Exit\n";
+        cout << "1. Insert at Beginning 2. Insert at End 3. Insert After 4. Insert Before 5. Delete from Beginning 6. Delete from End 7. Delete Specific Node 8. Search Node 9. Display List 10. Exit\n";
         cout << "Enter choice: ";
         cin >> choice;
         switch(choice) {
-            case 1: cin >> val; insertBegin(val); break;
-            case 2: cin >> val; insertEnd(val); break;
-            case 3: cin >> val >> val2; insertAfter(val, val2); break;
-            case 4: cin >> val >> val2; insertBefore(val, val2); break;
-            case 5: deleteBegin(); break;
-            case 6: deleteEnd(); break;
-            case 7: cin >> val; deleteNode(val); break;
-            case 8: cin >> val; searchNode(val); break;
-            case 9: displayList(); break;
-            case 10: cout << "Exiting...\n"; break;
-            default: cout << "Invalid Choice\n";
+            case 1: cin >> val;
+                insertBegin(val);
+                break;
+            case 2: cin >> val;
+                insertEnd(val);
+                break;
+            case 3: cin >> val >> val2;
+                insertAfter(val, val2);
+                break;
+            case 4: cin >> val >> val2;
+                insertBefore(val, val2);
+                break;
+            case 5: deleteBegin();
+                break;
+            case 6:
+                deleteEnd();
+                break;
+            case 7: cin >> val;
+                deleteNode(val);
+                break;
+            case 8: cin >> val;
+                searchNode(val); 
+                break;
+            case 9: displayList();
+                break;
+            case 10: cout << "Exiting...\n";
+                break;
+            default:
+                cout << "Invalid Choice\n";
         }
     } while (choice != 10);
 }
