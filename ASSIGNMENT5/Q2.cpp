@@ -52,4 +52,32 @@ int main() {
     deleteAll(key);
     cout << "Updated Linked List: "; displayList();
 }
+//#include <iostream>
+// using namespace std;
+// struct Node {
+//     int data;
+//     Node* next;
+// };
+// int countAndDelete(Node*& head, int key) {
+//     Node* current = head;
+//     Node* pre = nullptr;
+//     int count = 0;
+//     while(current != nullptr) {
+//         if(current->data == key) {
+//             count++;
+//             Node* temp = current;
+//             if(pre != nullptr) {
+//                 pre->next = current->next; 
+//             } else {
+//                 head = current->next; 
+//             }
+//             current = current->next; 
+//             delete temp;          
+//         } else {
+//             pre = current;
+//             current = current->next;
+//         }
+//     }
+//     return count;
+// }
 
