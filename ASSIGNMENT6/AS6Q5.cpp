@@ -1,43 +1,32 @@
-#include<iostream>
+#include <iostream>
 using namespace std;
-struct Node{
+struct Node {
     int data;
     Node* next;
 };
-Node* head = NULL;
-void insertLast(int val){
-    Node* n = new Node;
-    n->data = val;
-    if(!head){
-        head = n;
-        n->next = n;
-        return;
-    }
-    Node* temp = head;
-    while(temp->next != head) temp = temp->next;
-    temp->next = n;
-    n->next = head;
+Node* createNode(int data) {
+    Node* newNode = new Node;
+    newNode->data = data;
+    newNode->next = nullptr;
+    return newNode;
 }
-void displayWithHead(){
-    if(!head) return;
-    Node* temp = head;
-    do{
-        cout << temp->data << " ";
+bool isCircular(Node* head) {
+    if (head == nullptr) 
+        return false; 
+    Node* temp = head->next;
+    while (temp != nullptr && temp != head) {
         temp = temp->next;
-    }while(temp != head);
-    cout << head->data << endl;
-}
-int main(){
-    int n, val;
-    cout << "Enter number of nodes: ";
-    cin >> n;
-    for(int i = 0; i < n; i++){
-        cout << "Enter value for node " << i+1 << ": ";
-        cin >> val;
-        insertLast(val);
     }
-    cout << "Circular Linked List: ";
-    displayWithHead();
+    return (temp == head);
+}
+int main() {
+    Node* head = createNode(1);
+    head->next = createNode(2);
+    head->next->next = createNode(3);
+    head->next->next->next = createNode(4);
+    if (isCircular(head))
+        cout << "The linked list is circular." << endl;
+    else
+        cout << "The linked list is not circular." << endl;
     return 0;
 }
-
