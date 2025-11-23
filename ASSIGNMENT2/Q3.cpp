@@ -7,6 +7,20 @@ int missing(int arr[], int n) {
         actualsum += arr[i];
     return expectedsum - actualsum;
 }
+int usingbinarysearch(int low,int high,int A[],int n){
+    int missing=0;
+    while(low<=high){
+    int mid=(low+high)/2;
+    if(A[mid]==mid+1){
+        low=mid+1;
+    }
+    else if(A[mid]>mid+1){
+        high=mid-1;
+    }
+    }
+    missing=low+1;
+    return missing;
+}
 int main() {
     int n;
     cout << "Enter the number of elements : " << endl;
@@ -16,6 +30,7 @@ int main() {
     for (int i = 0; i < n; i++)
     cin >> arr[i];
     cout << "Missing Number is: " << missing(arr, n) << endl;
+     int missingvalue=usingbinarysearch(0,n-1,A,n);
+    cout<<"Missing value is "<<missingvalue<<endl;
     return 0;
 }
-
