@@ -1,36 +1,34 @@
 #include <iostream>
 using namespace std;
 int missing(int arr[], int n) {
-    int expectedsum = (n + 1) * (n + 2) / 2; 
-    int actualsum = 0;
+    int expectedSum = (n + 1) * (n + 2) / 2;
+    int actualSum = 0;
     for (int i = 0; i < n; i++)
-        actualsum += arr[i];
-    return expectedsum - actualsum;
+        actualSum += arr[i];
+    return expectedSum - actualSum;
 }
-int usingbinarysearch(int low,int high,int A[],int n){
-    int missing=0;
-    while(low<=high){
-    int mid=(low+high)/2;
-    if(A[mid]==mid+1){
-        low=mid+1;
+int usingbinarysearch(int low, int high, int A[], int n) {
+    while (low <= high) {
+        int mid = (low + high) / 2;
+
+        if (A[mid] == mid + 1) {
+            low = mid + 1;
+        } else {
+            high = mid - 1;
+        }
     }
-    else if(A[mid]>mid+1){
-        high=mid-1;
-    }
-    }
-    missing=low+1;
-    return missing;
+    return low + 1;
 }
 int main() {
     int n;
-    cout << "Enter the number of elements : " << endl;
+    cout << "Enter number of elements: ";
     cin >> n;
-    int arr[100]; 
-    cout << "Enter elements of an array: " << endl;
+    int arr[100];
+    cout << "Enter elements of a sorted array:\n";
     for (int i = 0; i < n; i++)
-    cin >> arr[i];
-    cout << "Missing Number is: " << missing(arr, n) << endl;
-     int missingvalue=usingbinarysearch(0,n-1,A,n);
-    cout<<"Missing value is "<<missingvalue<<endl;
+        cin >> arr[i];
+    cout << "Missing Number (using Sum method): " << missing(arr, n) << endl;
+    int missingValue = usingbinarysearch(0, n - 1, arr, n);
+    cout << "Missing Number (using Binary Search): " << missingValue << endl;
     return 0;
 }
