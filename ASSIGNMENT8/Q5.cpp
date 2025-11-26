@@ -9,7 +9,9 @@ void heapify(int arr[], int n, int i) {
     if (r < n && arr[r] > arr[maxindex]) 
 	maxindex = r;
     if (maxindex != i) {
-        swap(arr[i], arr[maxindex]);
+        int temp = arr[i];  
+        arr[i] = arr[maxindex];
+        arr[maxindex] = temp;
         heapify(arr, n, maxindex);
     }
 }
@@ -17,7 +19,9 @@ void heapSort(int arr[], int n) {
     for (int i = n/2 - 1; i >= 0; i--)
 	heapify(arr, n, i);
     for (int i = n-1; i > 0; i--) {
-        swap(arr[0], arr[i]);
+        int temp = arr[0];
+        arr[0] = arr[i];
+        arr[i] = temp;
         heapify(arr, i, 0);
     }
 }
