@@ -9,7 +9,9 @@ void heapify(int heap[], int n, int i) {
     if (r < n && heap[r] > heap[maxindex])
 	maxindex = r;
     if (maxindex != i) {
-        swap(heap[i], heap[maxindex]);
+        int temp = heap[i];
+        heap[i] = heap[maxindex];
+        heap[maxindex] = temp;
         heapify(heap, n, maxindex);
     }
 }
@@ -17,7 +19,9 @@ void push(int heap[], int &n, int key) {
     heap[n++] = key;
     int i = n-1;
     while (i != 0 && heap[(i-1)/2] < heap[i]) {
-        swap(heap[i], heap[(i-1)/2]);
+        int temp = heap[i];
+        heap[i] = heap[(i-1)/2];
+        heap[(i-1)/2] = temp;
         i = (i-1)/2;
     }
 }
