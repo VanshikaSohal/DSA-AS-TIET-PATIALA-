@@ -19,7 +19,8 @@ void bfs(int start, int adj[][10], int adjSize[], bool visited[], int n) {
 }
 int main() {
     int n = 6;
-    int adj[10][10];   
+    int adj[10][10]={0}; 
+   cout << "BFS traversal starting from node: ";
     int adjsize[10];   
     for (int i = 0; i < n; i++) 
 	adjsize[i] = 0;
@@ -33,7 +34,7 @@ int main() {
     adj[4][adjsize[4]++] = 2;
     adj[3][adjsize[3]++] = 5;
     adj[5][adjsize[5]++] = 3;
-    bool visited[10];
+    bool visited[10] = {false}; 
     for (int i = 0; i < n; i++)
 	visited[i] = false;
     cout << "BFS traversal starting from node:";
