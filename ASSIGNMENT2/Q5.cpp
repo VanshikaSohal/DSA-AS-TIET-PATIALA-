@@ -102,7 +102,9 @@ void q5d() {
     idx = 0;
     for(int i=0; i<n; i++){
         for(int j=0; j<n; j++){
-            if(j>=i) cout << arr[idx++] << " ";
+            if(j>=i) 
+                int index = i*n - (i*(i+1))/2 + (j - i);   
+                cout << arr[index] << " ";
             else cout << "0 ";
         }
         cout << "\n";
