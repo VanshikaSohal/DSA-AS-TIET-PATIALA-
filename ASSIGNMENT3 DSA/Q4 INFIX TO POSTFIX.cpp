@@ -57,7 +57,8 @@ string convert(string infix) {
 			pop();
         }
         else if(isoperator(c)) {
-            while(!empty() && precedence(peek()) >= precedence(c)) {
+            while(!empty() && (precedence(peek()) > precedence(c) || 
+                  (precedence(peek()) == precedence(c) && c != '^'))) {
                 postfix += pop();
             }
             push(c);
@@ -73,6 +74,9 @@ int main() {
     while (true) {
         cout << "Enter infix : ";
         cin >> infix;
+		getline(cin, infix); 
+        if(infix == "exit") 
+		break; 
         string postfix = convert(infix);
         cout << "Postfix: " << postfix << endl;
     }
