@@ -1,13 +1,13 @@
 #include <iostream>
 using namespace std;
 const int MAX = 100; 
-int adj[MAX][MAX];   
+int adj[MAX][MAX]={0};   
 int adjSize[MAX];    
 bool visited[MAX];   
 void dfs(int node) {
     visited[node] = true;
     cout << node << " ";
-    for (int i = 0; i < adjsize[node]; i++) {//C++ AUTOMATICALLY DOES NOT KNOW THE NUMBER OF NEIGHBOURERS FOR EACH NODE SO WE MAEK A ASJSIZE ARRAY TO DETECT ITS NEIGHBOURERS
+    for (int i = 0; i < adjSize[node]; i++) {//C++ AUTOMATICALLY DOES NOT KNOW THE NUMBER OF NEIGHBOURERS FOR EACH NODE SO WE MAEK A ASJSIZE ARRAY TO DETECT ITS NEIGHBOURERS
         int neighbor = adj[node][i];
         if (!visited[neighbor]) {
             dfs(neighbor);
