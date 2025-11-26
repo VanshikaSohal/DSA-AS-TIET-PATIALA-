@@ -53,36 +53,47 @@ int main() {
                 break;
             }
             case 4: {
-                int n;
+                 int n;
                 cout << "Enter number of strings: ";
                 cin >> n;
                 cin.ignore();
-                vector<string> arr(n);
+                char arr[50][100];  
                 cout << "Enter " << n << " strings:\n";
                 for (int i = 0; i < n; i++) {
-                    getline(cin, arr[i]);
+                    cin.getline(arr[i], 100);  
                 }
-                sort(arr.begin(), arr.end());
+                for (int i = 0; i < n - 1; i++) {
+                    for (int j = 0; j < n - i - 1; j++) {
+                        if (strcmp(arr[j], arr[j + 1]) > 0) { 
+                            char temp[100];
+                            strcpy(temp, arr[j]);
+                            strcpy(arr[j], arr[j + 1]);
+                            strcpy(arr[j + 1], temp);
+                        }
+                    }
+                }
+
                 cout << "Strings in alphabetical order:\n";
-                for (const string &s : arr) {
-                    cout << s << endl;
+                for (int i = 0; i < n; i++) {
+                    cout << arr[i] << endl;
                 }
                 break;
             }
+
+            }
             case 5: {
-            string str;
-            cout<<"Enter the string: "<<endl;
-            cin>>str;
-            for (auto &c : str) {
-            c = tolower(c);
+             char str[100];
+                cout << "Enter the string: ";
+                cin.getline(str, 100);
+                for (int i = 0; str[i] != '\0'; i++) {
+                    str[i] = tolower(str[i]); 
+                }
+                cout << "Lowercase string: " << str << endl;
+                break;
             }
-            cout << str << endl;
-            break;
-            }
-            default:{
-                cout<<"Invalid choice"<<endl;
-            }
-          }
+            default:
+                cout << "Invalid choice\n";
+              }
     }
     return 0;
 }
