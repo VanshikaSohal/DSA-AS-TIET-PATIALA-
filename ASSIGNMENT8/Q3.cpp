@@ -5,6 +5,8 @@ struct Node {
     Node* left;
     Node* right;
 };
+int max(int a, int b) { return (a > b) ? a : b; }
+int min(int a, int b) { return (a < b) ? a : b; }
 Node* createNode(int data) {
     Node* node = new Node();
     node->data = data;
@@ -13,16 +15,16 @@ Node* createNode(int data) {
 }
 Node* insert(Node* root, int key) {
     if (!root) 
-	return createNode(key);
+        return createNode(key);
     if (key < root->data) 
-	root->left = insert(root->left, key);
+        root->left = insert(root->left, key);
     else if (key > root->data)
-	root->right = insert(root->right, key);
+        root->right = insert(root->right, key);
     return root;
 }
 Node* findmin(Node* root) {
     while (root && root->left)
-	root = root->left;
+        root = root->left;
     return root;
 }
 Node* deletenode(Node* root, int key) {
@@ -31,22 +33,19 @@ Node* deletenode(Node* root, int key) {
         return NULL;
     }
     if (key < root->data) 
-	root->left = deletenode(root->left, key);
+        root->left = deletenode(root->left, key);
     else if (key > root->data) 
-	root->right = deletenode(root->right, key);
+        root->right = deletenode(root->right, key);
     else {
-        if (!root->left) 
-		{
-		Node* temp = root->right; 
-		delete root;
-		return temp;
-		}
-        else if (!root->right)
-		{ 
-		Node* temp = root->left;
-		delete root; 
-		return temp; 
-		}
+        if (!root->left) {
+            Node* temp = root->right;
+            delete root;
+            return temp;
+        } else if (!root->right) {
+            Node* temp = root->left;
+            delete root;
+            return temp;
+        }
         Node* temp = findmin(root->right);
         root->data = temp->data;
         root->right = deletenode(root->right, temp->data);
@@ -55,23 +54,23 @@ Node* deletenode(Node* root, int key) {
 }
 int maxdepth(Node* root) {
     if (!root)
-	return 0;
+        return 0;
     int l = maxdepth(root->left);
     int r = maxdepth(root->right);
     return max(l, r) + 1;
 }
 int mindepth(Node* root) {
-    if (!root) 
-	return 0;
+    if (!root)
+        return 0;
     if (!root->left)
-	return mindepth(root->right) + 1;
-    if (!root->right) 
-	return mindepth(root->left) + 1;
+        return mindepth(root->right) + 1;
+    if (!root->right)
+        return mindepth(root->left) + 1;
     return min(mindepth(root->left), mindepth(root->right)) + 1;
 }
 void inordertraversal(Node* root) {
     if (!root)
-	return;
+        return;
     inordertraversal(root->left);
     cout << root->data << " ";
     inordertraversal(root->right);
@@ -80,7 +79,7 @@ int main() {
     Node* root = NULL;
     int choice, key;
     while (true) {
-        cout << "BST Menu";
+        cout << " BST Menu ";
         cout << "1. Insert element\n";
         cout << "2. Delete element\n";
         cout << "3. Maximum depth of BST\n";
@@ -112,11 +111,10 @@ int main() {
                 cout << endl;
                 break;
             case 6:
-                exit(0);
+                return 0;
             default:
                 cout << "Invalid choice";
         }
     }
     return 0;
 }
-
