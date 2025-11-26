@@ -27,7 +27,7 @@ int main() {
     root->left = createNode(10);
     root->right = createNode(30);
     root->left->left = createNode(5);
-    root->left->right = createNode(25); 
+    root->left->right = createNode(15); 
     if (isBST(root))
 	cout << "Tree is BST";
     else
