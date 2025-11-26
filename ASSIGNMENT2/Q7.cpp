@@ -1,5 +1,4 @@
 #include<iostream>
-#include<vector>
 using namespace std;
 int inversion(int arr[],int n)
 {
@@ -8,7 +7,7 @@ int inversion(int arr[],int n)
 	{
 		for(int j=i+1;j<n;j++)
 		{
-			if(i<j && arr[i]>arr[j])
+			if(arr[i]>arr[j])
 			{
 				count++;
 			}
