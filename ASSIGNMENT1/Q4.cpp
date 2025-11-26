@@ -1,5 +1,6 @@
 #include <iostream>
 using namespace std;
+
 void reverse() {
     int n;
     int arr[100];
