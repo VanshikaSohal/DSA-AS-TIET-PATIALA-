@@ -33,8 +33,12 @@ void insert() {
     cin >> value;
     if (posi < 1 || posi > n + 1) {
         cout << "Invalid position" << endl;
+		return;
     }
-	n++;
+	if (n == 100) {
+        cout << "Array is full!" << endl;
+        return;
+    }
     for (int i = n; i >= posi; i--)
     arr[i] = arr[i - 1];
     arr[posi - 1] = value;
