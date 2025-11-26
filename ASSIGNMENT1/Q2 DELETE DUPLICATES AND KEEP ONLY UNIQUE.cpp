@@ -8,7 +8,7 @@ void deldupli(int arr[],int &n)
 		{
 			if(arr[i]==arr[j])
 				{
-					for(int k=j;k<n;k++){
+					for(int k=j;k<n-1;k++){
 						arr[k]=arr[k+1];
 					}
 					n--;
