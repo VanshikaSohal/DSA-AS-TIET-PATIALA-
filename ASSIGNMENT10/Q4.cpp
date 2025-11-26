@@ -6,7 +6,7 @@ int graph[MAX][MAX];
 bool visited[MAX];
 int dist[MAX];
 int distmin() {
-    int minval = 9999, minindex = -1;
+    int minval = INT_MAX, minindex = -1;
     for (int i = 0; i < n; i++) {
         if (!visited[i] && dist[i] < minval) {
             minval = dist[i];
@@ -18,10 +18,10 @@ int distmin() {
 void dijkstra(int start) {
     for (int i = 0; i < n; i++) {
         visited[i] = false;
-        dist[i] = 9999;
+        dist[i] = INT_MAX;
     }
     dist[start] = 0;
-    for (int count = 0; count < n - 1; count++) {
+    for (int count = 0; count < n ; count++) {
         int u = distmin();
         if (u == -1) break;
         visited[u] = true;
