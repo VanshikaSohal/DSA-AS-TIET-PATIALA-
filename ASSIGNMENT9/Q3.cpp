@@ -5,8 +5,8 @@ int n;
 int graph[MAX][MAX]; 
 bool visited[MAX]; 
 void prim() {
-    for (int i = 0; i < n; i++)
-	visited[i] = false;
+    for (int i = 0; i < n; i++){
+	visited[i] = false;}
     visited[0] = true; 
     int edgecount = 0;
     int mincost, u, v;
