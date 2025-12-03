@@ -1,0 +1,27 @@
+// Given two arrays, find the common elements using a hash set
+#include<iostream>
+using namespace std;
+void common(int A[],int B[],int n,int m){
+    const int MAX=1000;
+    bool hash[MAX]={false};
+    for(int i=0;i<n;i++)
+    {
+        hash[A[i]]=true;
+    }
+    for(int j=0;j<m;j++)
+    {
+        if((hash[B[j]])==true)
+        {
+            cout<<B[j]<<" ";
+            hash[B[j]]=false;//AVOID PRINTING DUPLICATES
+        }
+    }
+}
+int main(){
+    int A[]={1,2,3,4};
+    int n=sizeof(A)/sizeof(A[0]);
+    int B[]={3,4,5,6};
+    int m=sizeof(B)/sizeof(B[0]);
+    common(A,B,n,m);
+    return 0;
+}
